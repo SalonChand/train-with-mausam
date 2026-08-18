@@ -72,7 +72,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 const lb = document.querySelector('.lightbox');
 if (lb) {
   const lbImg = lb.querySelector('img');
-  const figs = Array.from(document.querySelectorAll('.gallery-grid figure'));
+  const figs = Array.from(document.querySelectorAll('.gallery-grid figure, .gallery-mosaic figure'));
   let i = 0;
   const open = n => { i = n; lbImg.src = figs[n].querySelector('img').src; lb.classList.add('open'); document.body.classList.add('no-scroll'); };
   const close = () => { lb.classList.remove('open'); document.body.classList.remove('no-scroll'); };

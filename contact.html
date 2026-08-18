@@ -68,7 +68,15 @@
             <label>Phone Number<input type="tel" name="phone" placeholder="98XXXXXXXX"></label>
           </div>
           <label>Email Address<input type="email" name="email" placeholder="you@example.com" required></label>
-          <label>Service Interested In<input type="text" name="service" placeholder="Personal Training, Online Coaching, Custom Program…"></label>
+          <div class="choice-group">
+            <span class="choice-label">Service Interested In</span>
+            <div class="choice-options">
+              <label class="choice"><input type="radio" name="service" value="Personal Training" required><span>Personal Training</span></label>
+              <label class="choice"><input type="radio" name="service" value="Online Coaching"><span>Online Coaching</span></label>
+              <label class="choice"><input type="radio" name="service" value="Custom Program"><span>Custom Program</span></label>
+              <label class="choice"><input type="radio" name="service" value="Free Consultation"><span>Free Consultation</span></label>
+            </div>
+          </div>
           <label>Your Message<textarea name="message" placeholder="A little about yourself, your experience and your goals." required></textarea></label>
           <button type="submit" class="btn">Send Message</button>
         </form>
