@@ -7,12 +7,11 @@
 <meta name="description" content="Book your free consultation and take the first step towards your fitness goals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111110'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='32' font-weight='700' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <nav class="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="index.html">Train With Mausam</a>
@@ -24,22 +23,23 @@
       <a href="gallery.html">Gallery</a>
       <a href="contact.html" class="active">Contact</a>
     </div>
+    <a href="contact.html" class="nav-cta">Book Now</a>
     <button class="nav-toggle" aria-label="Menu"><span></span><span></span></button>
   </div>
 </nav>
 
 <div class="mobile-menu">
   <div class="mm-links">
-    <a href="index.html"><span class="idx">01</span>Home</a>
-    <a href="about.html"><span class="idx">02</span>About</a>
-    <a href="services.html"><span class="idx">03</span>Services</a>
-    <a href="results.html"><span class="idx">04</span>Results</a>
-    <a href="gallery.html"><span class="idx">05</span>Gallery</a>
-    <a href="contact.html"><span class="idx">06</span>Contact</a>
+    <a href="index.html" class="mm-link">Home</a>
+    <a href="about.html" class="mm-link">About</a>
+    <a href="services.html" class="mm-link">Services</a>
+    <a href="results.html" class="mm-link">Results</a>
+    <a href="gallery.html" class="mm-link">Gallery</a>
+    <a href="contact.html" class="mm-link">Contact</a>
   </div>
   <div class="mm-foot">
-    <a href="contact.html" class="mm-book">Book a Free Consultation</a>
-    <div class="mm-contact">
+    <a href="contact.html" class="mm-cta">Book Free Consultation</a>
+    <div class="mm-info">
       <a href="mailto:mausam.twm@gmail.com">mausam.twm@gmail.com</a>
       <a href="https://wa.me/9779861322004">+977 9861322004</a>
     </div>
@@ -50,73 +50,51 @@
   </div>
 </div>
 
-<header class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Contact</p>
-    <h1 class="serif-lg">Start where you <span class="italic">are</span>.</h1>
-    <p class="sub">Tell me about your goals and book a free consultation. Replies usually come within a day.</p>
-  </div>
+<header class="page-hero">
+  <span class="eyebrow">Contact</span>
+  <h1>Start where you are.</h1>
+  <p>Tell me about your goals and book a free consultation. Replies usually come within a day.</p>
 </header>
 
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <form class="contact-form reveal">
-          <div class="field">
-            <label for="name">Full Name</label>
-            <input id="name" type="text" name="name" placeholder="Your name" required>
+<section class="section section-gray" style="padding-top:80px">
+  <div class="contact-layout">
+    <div>
+      <div class="form-card reveal">
+        <h3 class="form-title">Send a message</h3>
+        <p class="form-sub">Tell me a little about yourself and I'll get back to you soon.</p>
+        <form class="contact-form">
+          <div class="form-row">
+            <label>Full Name<input type="text" name="name" placeholder="Your name" required></label>
+            <label>Phone Number<input type="tel" name="phone" placeholder="98XXXXXXXX"></label>
           </div>
-          <div class="field">
-            <label for="email">Email Address</label>
-            <input id="email" type="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="field">
-            <label for="phone">Phone Number</label>
-            <input id="phone" type="tel" name="phone" placeholder="98XXXXXXXX">
-          </div>
-          <div class="field">
-            <label for="service">Service Interested In</label>
-            <input id="service" type="text" name="service" placeholder="Personal Training, Online Coaching, Custom Program…">
-          </div>
-          <div class="field">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" placeholder="A little about yourself, your experience and your goals." required></textarea>
-          </div>
+          <label>Email Address<input type="email" name="email" placeholder="you@example.com" required></label>
+          <label>Service Interested In<input type="text" name="service" placeholder="Personal Training, Online Coaching, Custom Program…"></label>
+          <label>Your Message<textarea name="message" placeholder="A little about yourself, your experience and your goals." required></textarea></label>
           <button type="submit" class="btn">Send Message</button>
         </form>
-        <div class="form-done">
-          <h3 class="serif-md">Message sent.</h3>
+        <div class="form-success">
+          <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Message sent.</h3>
           <p>Thanks for reaching out. I'll get back to you as soon as I can — usually within a day.</p>
         </div>
       </div>
-      <aside class="contact-side reveal" style="--d:.1s">
-        <div class="cs-block">
-          <div class="k">WhatsApp / Phone / Viber</div>
-          <a class="v" href="https://wa.me/9779861322004">+977 9861322004</a>
-        </div>
-        <div class="cs-block">
-          <div class="k">Email</div>
-          <a class="v" href="mailto:mausam.twm@gmail.com">mausam.twm@gmail.com</a>
-        </div>
-        <div class="cs-block">
-          <div class="k">Location</div>
-          <div class="v">Nepal &amp; Worldwide</div>
-        </div>
-        <div class="cs-social">
-          <a href="https://www.instagram.com/trainwith_mausam/">Instagram</a>
-          <a href="https://www.tiktok.com/@trainwith_mausam">TikTok</a>
-        </div>
-      </aside>
     </div>
+    <aside class="contact-aside reveal" style="--d:.1s">
+      <div class="info-card"><div class="k">WhatsApp / Phone / Viber</div><a class="v" href="https://wa.me/9779861322004">+977 9861322004</a></div>
+      <div class="info-card"><div class="k">Email</div><a class="v" href="mailto:mausam.twm@gmail.com">mausam.twm@gmail.com</a></div>
+      <div class="info-card"><div class="k">Location</div><div class="v">Nepal &amp; Worldwide</div></div>
+      <div class="contact-social">
+        <a href="https://www.instagram.com/trainwith_mausam/">Instagram</a>
+        <a href="https://www.tiktok.com/@trainwith_mausam">TikTok</a>
+      </div>
+    </aside>
   </div>
 </section>
-
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
+  <div class="footer-inner">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <div class="fb">Train With Mausam</div>
+        <div class="footer-brand-row">Train With Mausam</div>
         <p>Professional fitness training and coaching to help you achieve your health and fitness goals.</p>
       </div>
       <div class="footer-col">

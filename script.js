@@ -2,9 +2,9 @@ const nav = document.querySelector('.nav');
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.mobile-menu');
 
-const setNav = () => nav.classList.toggle('solid', window.scrollY > 40);
-setNav();
-window.addEventListener('scroll', setNav);
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
 
 if (toggle && menu) {
   toggle.addEventListener('click', () => {
@@ -22,36 +22,36 @@ if (toggle && menu) {
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.classList.add('in');
+      e.target.classList.add('visible');
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.14 });
+}, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-const count = el => {
-  const target = parseInt(el.dataset.n, 10);
+function animateCount(el) {
+  const target = parseInt(el.dataset.count, 10);
   const suffix = el.dataset.suffix || '';
-  const dur = 1700;
+  const dur = 1600;
   const start = performance.now();
-  const tick = now => {
+  function step(now) {
     const p = Math.min((now - start) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
     el.textContent = Math.round(target * eased) + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-};
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
 
 const co = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      count(e.target);
+      animateCount(e.target);
       co.unobserve(e.target);
     }
   });
-}, { threshold: 0.6 });
-document.querySelectorAll('[data-n]').forEach(el => co.observe(el));
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-count]').forEach(el => co.observe(el));
 
 document.querySelectorAll('.faq-item').forEach(item => {
   const q = item.querySelector('.faq-q');
@@ -72,26 +72,15 @@ document.querySelectorAll('.faq-item').forEach(item => {
 const lb = document.querySelector('.lightbox');
 if (lb) {
   const lbImg = lb.querySelector('img');
-  const figs = Array.from(document.querySelectorAll('.gallery figure'));
+  const figs = Array.from(document.querySelectorAll('.gallery-grid figure'));
   let i = 0;
-  const open = n => {
-    i = n;
-    lbImg.src = figs[n].querySelector('img').src;
-    lb.classList.add('open');
-    document.body.classList.add('no-scroll');
-  };
-  const close = () => {
-    lb.classList.remove('open');
-    document.body.classList.remove('no-scroll');
-  };
-  const step = d => {
-    i = (i + d + figs.length) % figs.length;
-    lbImg.src = figs[i].querySelector('img').src;
-  };
+  const open = n => { i = n; lbImg.src = figs[n].querySelector('img').src; lb.classList.add('open'); document.body.classList.add('no-scroll'); };
+  const close = () => { lb.classList.remove('open'); document.body.classList.remove('no-scroll'); };
+  const step = d => { i = (i + d + figs.length) % figs.length; lbImg.src = figs[i].querySelector('img').src; };
   figs.forEach((f, n) => f.addEventListener('click', () => open(n)));
-  lb.querySelector('.lb-close').addEventListener('click', close);
-  lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
-  lb.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); step(1); });
+  lb.querySelector('.lightbox-close').addEventListener('click', close);
+  lb.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
+  lb.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); step(1); });
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
   document.addEventListener('keydown', e => {
     if (!lb.classList.contains('open')) return;
@@ -101,17 +90,11 @@ if (lb) {
   });
 }
 
-document.querySelectorAll('.field input, .field textarea').forEach(input => {
-  const field = input.closest('.field');
-  input.addEventListener('focus', () => field.classList.add('focus'));
-  input.addEventListener('blur', () => field.classList.remove('focus'));
-});
-
 const form = document.querySelector('.contact-form');
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
     form.style.display = 'none';
-    document.querySelector('.form-done').classList.add('show');
+    document.querySelector('.form-success').classList.add('visible');
   });
 }
